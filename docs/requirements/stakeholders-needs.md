@@ -41,8 +41,6 @@
 
 ### Посилання
 
-*[Розділ містить повний список всіх документів, про які згадується.]*
-
 - [Дані](https://uk.wikipedia.org/wiki/%D0%94%D0%B0%D0%BD%D1%96)
 - [Таблиця](https://uk.wikipedia.org/wiki/%D0%A2%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8F_(%D0%B1%D0%B0%D0%B7%D0%B8_%D0%B4%D0%B0%D0%BD%D0%B8%D1%85))
 - [Запит](https://www.kievoit.ippo.kubg.edu.ua/kievoit/2012/25/25.html)
