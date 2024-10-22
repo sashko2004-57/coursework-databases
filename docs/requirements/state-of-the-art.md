@@ -302,4 +302,10 @@ DataHub — це платформа, яка фокусується на збир
 
 ## Посилання
 
-*[Розділ містить повний список всіх документів, про які згадується.]*
+- [Відкриті дані](https://en.wikipedia.org/wiki/Open_data)
+- [Збір Даних](https://www.researchgate.net/publication/359596426_Data_Collection_Methods_and_Tools_for_Research_A_Step-by-Step_Guide_to_Choose_Data_Collection_Technique_for_Academic_and_Business_Research_Projects)
+- [SQL бази даних](https://en.wikipedia.org/wiki/SQL)
+- [Web scraping](https://en.wikipedia.org/wiki/Web_scraping)
+- [CKAN](https://docs.ckan.org/en/2.11/)
+- [DKAN](https://dkan.readthedocs.io/en/latest/)
+- [DataHub](https://datahubproject.io/docs/features)
