@@ -3,7 +3,8 @@
 ### 1. Загальна схема
 
 @startuml
-actor "Користувач" as RegisteredUser #ffed94
+
+    actor "Користувач" as RegisteredUser #ffed94
     actor "Дослідник" as DataResearcher #bffaa2
     actor "Експерт" as DataExpert #eacffa
     actor "Адміністратор системи" as SystemAdmin #94f1ff
@@ -54,7 +55,8 @@ actor "Користувач" as RegisteredUser #ffed94
 ### 2. Схема взаємодії користувача
 
 @startuml
-actor "Користувач" as RegisteredUser #ffed94
+
+    actor "Користувач" as RegisteredUser #ffed94
 
     usecase "Створити акаунт" as UC_1.1
     usecase "Увійти в систему" as UC_1.2  
@@ -82,7 +84,8 @@ actor "Користувач" as RegisteredUser #ffed94
 ### 3. Схема взаємодії дослідника
 
 @startuml
-actor "Дослідник" as DataResearcher #bffaa2
+    
+    actor "Дослідник" as DataResearcher #bffaa2
 
     usecase "Завантажити новий набір даних" as UC_2.1
     usecase "Отримати аналітику по даним" as UC_2.2
@@ -108,7 +111,8 @@ actor "Дослідник" as DataResearcher #bffaa2
 ### 4. Схема взаємодії експерта
 
 @startuml
-actor "Експерт" as DataExpert #eacffa
+    
+    actor "Експерт" as DataExpert #eacffa
 
     usecase "Оцінити якість набору даних" as UC_3.1
     usecase "Додати експертну думку" as UC_3.2
@@ -132,7 +136,8 @@ actor "Експерт" as DataExpert #eacffa
 ### 5. Схема взаємодії адміністратора системи
 
 @startuml
-actor "Адміністратор системи" as SystemAdmin #94f1ff
+    
+    actor "Адміністратор системи" as SystemAdmin #94f1ff
 
     usecase "Управління акаунтами користувачів" as UC_4.1
     usecase "Перевірка на відповідність стандартам" as UC_4.2
