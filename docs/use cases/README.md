@@ -1,4 +1,164 @@
-# Модель прецедентів
+## Модель прецедентів
+
+### 1. Загальна схема
+
+@startuml
+actor "Користувач" as RegisteredUser #ffed94
+    actor "Дослідник" as DataResearcher #bffaa2
+    actor "Експерт" as DataExpert #eacffa
+    actor "Адміністратор системи" as SystemAdmin #94f1ff
+    
+    usecase "Створити акаунт" as UC_1.1
+    usecase "Увійти в систему" as UC_1.2  
+    usecase "Редагувати профіль" as UC_1.3
+    usecase "Перегляд доступних наборів даних" as UC_1.4
+    
+    usecase "Завантажити новий набір даних" as UC_2.1    
+    usecase "Отримати аналітику по даним" as UC_2.2
+    usecase "Редагувати опис набору даних" as UC_2.3
+    
+    usecase "Оцінити якість набору даних" as UC_3.1
+    usecase "Додати експертну думку" as UC_3.2
+    
+    usecase "Управління акаунтами користувачів" as UC_4.1
+    usecase "Перевірка на відповідність стандартам" as UC_4.2
+    usecase "Керування наборами даних" as UC_4.3
+
+    RegisteredUser --> UC_1.1
+    RegisteredUser --> UC_1.2
+    RegisteredUser --> UC_1.3
+    RegisteredUser --> UC_1.4
+    
+    DataResearcher --|> RegisteredUser 
+    DataExpert --|> RegisteredUser
+    SystemAdmin --|> RegisteredUser
+    
+    DataResearcher --> UC_2.1
+    DataResearcher --> UC_2.2
+    DataResearcher --> UC_2.3
+    
+    DataExpert --> UC_3.1
+    DataExpert --> UC_3.2
+    
+    SystemAdmin --> UC_4.1
+    SystemAdmin --> UC_4.2
+    SystemAdmin --> UC_4.3
+    
+    right footer
+        Модель прецедентів для системи управління відкритими даними.
+        НТУУ КПІ ім.І.Сікорського
+        Київ-2024
+    end footer
+@enduml
+
+### 2. Схема взаємодії користувача
+
+@startuml
+actor "Користувач" as RegisteredUser #ffed94
+
+    usecase "Створити акаунт" as UC_1.1
+    usecase "Увійти в систему" as UC_1.2  
+    usecase "Редагувати профіль" as UC_1.3
+    usecase "Перегляд доступних наборів даних" as UC_1.4
+    
+    usecase "Завантажити фото" as UC_1.3.1
+    usecase "Змінити пароль" as UC_1.3.2
+
+    RegisteredUser --> UC_1.1
+    RegisteredUser --> UC_1.2
+    RegisteredUser --> UC_1.3
+    RegisteredUser --> UC_1.4
+    
+    UC_1.3.1 ..> UC_1.3 :extends
+    UC_1.3.2 ..> UC_1.3 :extends
+
+    right footer
+        Модель прецедентів для зареєстрованого користувача.
+        НТУУ КПІ ім.І.Сікорського
+        Київ-2024
+    end footer
+@enduml
+
+### 3. Схема взаємодії дослідника
+
+@startuml
+actor "Дослідник" as DataResearcher #bffaa2
+
+    usecase "Завантажити новий набір даних" as UC_2.1
+    usecase "Отримати аналітику по даним" as UC_2.2
+    usecase "Редагувати опис набору даних" as UC_2.3
+    
+    usecase "Додати опис" as UC_2.1.1
+    usecase "Позначити дані як публічні" as UC_2.3.1
+    
+    DataResearcher --> UC_2.1
+    DataResearcher --> UC_2.2
+    DataResearcher --> UC_2.3
+    
+    UC_2.1.1 ..> UC_2.1 :extends
+    UC_2.3.1 ..> UC_2.3 :extends
+
+    right footer
+        Модель прецедентів для дослідника.
+        НТУУ КПІ ім.І.Сікорського
+        Київ-2024
+    end footer
+@enduml
+
+### 4. Схема взаємодії експерта
+
+@startuml
+actor "Експерт" as DataExpert #eacffa
+
+    usecase "Оцінити якість набору даних" as UC_3.1
+    usecase "Додати експертну думку" as UC_3.2
+    
+    usecase "Додати коментар" as UC_3.2.1
+    usecase "Позначити набір даних як надійний" as UC_3.2.2
+    
+    DataExpert --> UC_3.1
+    DataExpert --> UC_3.2
+    
+    UC_3.2.1 ..> UC_3.2 :extends
+    UC_3.2.2 ..> UC_3.2 :extends
+
+    right footer
+        Модель прецедентів для експерта з відкритих даних.
+        НТУУ КПІ ім.І.Сікорського
+        Київ-2024
+    end footer
+@enduml
+
+### 5. Схема взаємодії адміністратора системи
+
+@startuml
+actor "Адміністратор системи" as SystemAdmin #94f1ff
+
+    usecase "Управління акаунтами користувачів" as UC_4.1
+    usecase "Перевірка на відповідність стандартам" as UC_4.2
+    usecase "Керування наборами даних" as UC_4.3
+    
+    usecase "Заблокувати користувача" as UC_4.1.1
+    usecase "Відновити акаунт користувача" as UC_4.1.2
+    usecase "Перевірити новий набір даних" as UC_4.2.1
+    usecase "Затвердити набір даних" as UC_4.3.1
+    
+    SystemAdmin --> UC_4.1
+    SystemAdmin --> UC_4.2
+    SystemAdmin --> UC_4.3
+    
+    UC_4.1.1 ..> UC_4.1 :extends
+    UC_4.1.2 ..> UC_4.1 :extends
+    UC_4.2.1 ..> UC_4.2 :extends
+    UC_4.3.1 ..> UC_4.3 :extends
+
+    right footer
+        Модель прецедентів для адміністратора системи.
+        НТУУ КПІ ім.І.Сікорського
+        Київ-2024
+    end footer
+@enduml
+
 
 В цьому файлі необхідно перелічити всі документи, розроблені в проекті та дати посилання на них.
 
