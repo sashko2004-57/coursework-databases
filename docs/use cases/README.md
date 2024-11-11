@@ -3,54 +3,70 @@
 ### 1. Загальна схема
 
 @startuml
+' Визначаємо кольорових акторів та ролі в системі
+actor "Користувач" as RegisteredUser #ffed94
+actor "Дослідник" as DataResearcher #bffaa2
+actor "Експерт" as DataExpert #eacffa
+actor "Адміністратор системи" as SystemAdmin #94f1ff
 
-    actor "Користувач" as RegisteredUser #ffed94
-    actor "Дослідник" as DataResearcher #bffaa2
-    actor "Експерт" as DataExpert #eacffa
-    actor "Адміністратор системи" as SystemAdmin #94f1ff
-    
+' Група прецедентів для роботи з акаунтом користувача
+package "Управління обліковим записом" {
     usecase "Створити акаунт" as UC_1.1
     usecase "Увійти в систему" as UC_1.2  
     usecase "Редагувати профіль" as UC_1.3
     usecase "Перегляд доступних наборів даних" as UC_1.4
-    
+}
+
+' Група прецедентів для роботи з даними дослідника
+package "Робота з даними дослідника" {
     usecase "Завантажити новий набір даних" as UC_2.1    
     usecase "Отримати аналітику по даним" as UC_2.2
     usecase "Редагувати опис набору даних" as UC_2.3
-    
+}
+
+' Група прецедентів для роботи експерта з оцінкою даних
+package "Експертна оцінка даних" {
     usecase "Оцінити якість набору даних" as UC_3.1
     usecase "Додати експертну думку" as UC_3.2
-    
+}
+
+' Група прецедентів для адміністрування системи
+package "Адміністрування системи" {
     usecase "Управління акаунтами користувачів" as UC_4.1
     usecase "Перевірка на відповідність стандартам" as UC_4.2
     usecase "Керування наборами даних" as UC_4.3
+}
 
-    RegisteredUser --> UC_1.1
-    RegisteredUser --> UC_1.2
-    RegisteredUser --> UC_1.3
-    RegisteredUser --> UC_1.4
-    
-    DataResearcher --|> RegisteredUser 
-    DataExpert --|> RegisteredUser
-    SystemAdmin --|> RegisteredUser
-    
-    DataResearcher --> UC_2.1
-    DataResearcher --> UC_2.2
-    DataResearcher --> UC_2.3
-    
-    DataExpert --> UC_3.1
-    DataExpert --> UC_3.2
-    
-    SystemAdmin --> UC_4.1
-    SystemAdmin --> UC_4.2
-    SystemAdmin --> UC_4.3
-    
-    right footer
-        Модель прецедентів для системи управління відкритими даними.
-        НТУУ КПІ ім.І.Сікорського
-        Київ-2024
-    end footer
+' Зв’язки між користувачами і прецедентами
+RegisteredUser --> UC_1.1
+RegisteredUser --> UC_1.2
+RegisteredUser --> UC_1.3
+RegisteredUser --> UC_1.4
+
+DataResearcher --|> RegisteredUser  ' Дослідник успадковує роль Користувача
+DataExpert --|> RegisteredUser      ' Експерт успадковує роль Користувача
+SystemAdmin --|> RegisteredUser     ' Адміністратор успадковує роль Користувача
+
+DataResearcher --> UC_2.1
+DataResearcher --> UC_2.2
+DataResearcher --> UC_2.3
+
+DataExpert --> UC_3.1
+DataExpert --> UC_3.2
+
+SystemAdmin --> UC_4.1
+SystemAdmin --> UC_4.2
+SystemAdmin --> UC_4.3
+
+' Додаємо нижній колонтитул із зазначенням джерела
+footer
+    Модель прецедентів для системи управління відкритими даними.
+    НТУУ КПІ ім. І. Сікорського
+    Київ-2024
+endfooter
+
 @enduml
+
 
 ### 2. Схема взаємодії користувача
 
