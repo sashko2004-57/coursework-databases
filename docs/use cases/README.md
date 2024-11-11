@@ -3,6 +3,8 @@
 ### 1. Загальна схема
 
 @startuml
+```
+
 ' Визначаємо кольорових акторів та ролі в системі
 actor "Користувач" as RegisteredUser #ffed94
 actor "Дослідник" as DataResearcher #bffaa2
@@ -64,7 +66,7 @@ footer
     НТУУ КПІ ім. І. Сікорського
     Київ-2024
 endfooter
-
+```
 @enduml
 
 
