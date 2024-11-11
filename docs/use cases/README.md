@@ -73,31 +73,36 @@ endfooter
 ### 2. Схема взаємодії користувача
 
 @startuml
+```
+actor "Користувач" as RegisteredUser #ffed94
 
-    actor "Користувач" as RegisteredUser #ffed94
+usecase "<b>Створити акаунт</b>\nРеєстрація користувача" as UC_1.1
+usecase "<b>Увійти в систему</b>\nАвторизація" as UC_1.2  
+usecase "<b>Редагувати профіль</b>\nРедагування профілю" as UC_1.3
+usecase "<b>Перегляд доступних наборів даних</b>\nОгляд даних" as UC_1.4
 
-    usecase "Створити акаунт" as UC_1.1
-    usecase "Увійти в систему" as UC_1.2  
-    usecase "Редагувати профіль" as UC_1.3
-    usecase "Перегляд доступних наборів даних" as UC_1.4
-    
-    usecase "Завантажити фото" as UC_1.3.1
-    usecase "Змінити пароль" as UC_1.3.2
+' Дочірні варіанти використання для "Редагувати профіль"
+usecase "<b>Завантажити фото</b>\nДодавання аватара" as UC_1.3.1
+usecase "<b>Змінити пароль</b>\nОновлення пароля" as UC_1.3.2
 
-    RegisteredUser --> UC_1.1
-    RegisteredUser --> UC_1.2
-    RegisteredUser --> UC_1.3
-    RegisteredUser --> UC_1.4
-    
-    UC_1.3.1 ..> UC_1.3 :extends
-    UC_1.3.2 ..> UC_1.3 :extends
+' Зв'язки між "Користувач" і основними прецедентами
+RegisteredUser -u-> UC_1.1
+RegisteredUser -u-> UC_1.2
+RegisteredUser -u-> UC_1.3
+RegisteredUser -u-> UC_1.4
 
-    right footer
-        Модель прецедентів для зареєстрованого користувача.
-        НТУУ КПІ ім.І.Сікорського
-        Київ-2024
-    end footer
+' Зв'язки "extends" для підпроцесів у прецеденті "Редагувати профіль"
+UC_1.3.1 ..> UC_1.3 :extends
+UC_1.3.2 ..> UC_1.3 :extends
+
+right footer
+    Модель прецедентів для зареєстрованого користувача.
+    НТУУ КПІ ім. І. Сікорського
+    Київ-2024
+end footer
+```
 @enduml
+
 
 ### 3. Схема взаємодії дослідника
 
