@@ -107,84 +107,86 @@ end footer
 ### 3. Схема взаємодії дослідника
 
 @startuml
-    
-    actor "Дослідник" as DataResearcher #bffaa2
+```
+actor "Дослідник" as DataResearcher #bffaa2
 
-    usecase "Завантажити новий набір даних" as UC_2.1
-    usecase "Отримати аналітику по даним" as UC_2.2
-    usecase "Редагувати опис набору даних" as UC_2.3
-    
-    usecase "Додати опис" as UC_2.1.1
-    usecase "Позначити дані як публічні" as UC_2.3.1
-    
-    DataResearcher --> UC_2.1
-    DataResearcher --> UC_2.2
-    DataResearcher --> UC_2.3
-    
-    UC_2.1.1 ..> UC_2.1 :extends
-    UC_2.3.1 ..> UC_2.3 :extends
+usecase "<b>Завантажити новий набір даних</b>\nЗавантаження даних" as UC_2.1
+usecase "<b>Отримати аналітику по даним</b>\nАналіз даних" as UC_2.2
+usecase "<b>Редагувати опис набору даних</b>\nРедагування опису" as UC_2.3
 
-    right footer
-        Модель прецедентів для дослідника.
-        НТУУ КПІ ім.І.Сікорського
-        Київ-2024
-    end footer
+' Дочірні варіанти використання
+usecase "<b>Додати опис</b>\nДодавання текстового опису" as UC_2.1.1
+usecase "<b>Позначити дані як публічні</b>\nПублікація даних" as UC_2.3.1
+
+' Основні взаємодії
+DataResearcher -u-> UC_2.1
+DataResearcher -u-> UC_2.2
+DataResearcher -u-> UC_2.3
+
+' Зв'язки розширення (extends) для дочірніх прецедентів
+UC_2.1.1 ..> UC_2.1 :extends
+UC_2.3.1 ..> UC_2.3 :extends
+
+right footer
+    Модель прецедентів для дослідника.
+    НТУУ КПІ ім. І. Сікорського
+    Київ-2024
+end footer
+```
 @enduml
 
 ### 4. Схема взаємодії експерта
 
 @startuml
-    
-    actor "Експерт" as DataExpert #eacffa
+```
+actor "Адміністратор системи" as Admin
 
-    usecase "Оцінити якість набору даних" as UC_3.1
-    usecase "Додати експертну думку" as UC_3.2
-    
-    usecase "Додати коментар" as UC_3.2.1
-    usecase "Позначити набір даних як надійний" as UC_3.2.2
-    
-    DataExpert --> UC_3.1
-    DataExpert --> UC_3.2
-    
-    UC_3.2.1 ..> UC_3.2 :extends
-    UC_3.2.2 ..> UC_3.2 :extends
+usecase "Додати нові дані" as UC_4
+usecase "Редагувати існуючі дані" as UC_5
+usecase "Видалити дані" as UC_6
+usecase "Переглядати звіти про діяльність адміністраторів" as UC_7
+usecase "Зареєструвати нового адміністратора" as UC_9
+usecase "Видаляти дані адміністратора" as UC_10
 
-    right footer
-        Модель прецедентів для експерта з відкритих даних.
-        НТУУ КПІ ім.І.Сікорського
-        Київ-2024
-    end footer
+Admin -u-> UC_4 : Додавання
+Admin -d-> UC_5 : Редагування
+Admin -d-> UC_6 : Видалення
+Admin -d-> UC_7 : Перегляд
+Admin -u-> UC_9 : Реєстрація
+Admin -u-> UC_10 : Видалення
+```
 @enduml
 
 ### 5. Схема взаємодії адміністратора системи
 
 @startuml
-    
-    actor "Адміністратор системи" as SystemAdmin #94f1ff
+```    
+actor "Адміністратор системи" as SystemAdmin #94f1ff
 
-    usecase "Управління акаунтами користувачів" as UC_4.1
-    usecase "Перевірка на відповідність стандартам" as UC_4.2
-    usecase "Керування наборами даних" as UC_4.3
-    
-    usecase "Заблокувати користувача" as UC_4.1.1
-    usecase "Відновити акаунт користувача" as UC_4.1.2
-    usecase "Перевірити новий набір даних" as UC_4.2.1
-    usecase "Затвердити набір даних" as UC_4.3.1
-    
-    SystemAdmin --> UC_4.1
-    SystemAdmin --> UC_4.2
-    SystemAdmin --> UC_4.3
-    
-    UC_4.1.1 ..> UC_4.1 :extends
-    UC_4.1.2 ..> UC_4.1 :extends
-    UC_4.2.1 ..> UC_4.2 :extends
-    UC_4.3.1 ..> UC_4.3 :extends
+usecase "Управління акаунтами користувачів" as UC_4.1
+usecase "Перевірка на відповідність стандартам" as UC_4.2
+usecase "Керування наборами даних" as UC_4.3
 
-    right footer
-        Модель прецедентів для адміністратора системи.
-        НТУУ КПІ ім.І.Сікорського
-        Київ-2024
-    end footer
+usecase "Заблокувати користувача" as UC_4.1.1
+usecase "Відновити акаунт користувача" as UC_4.1.2
+usecase "Перевірити новий набір даних" as UC_4.2.1
+usecase "Затвердити набір даних" as UC_4.3.1
+
+SystemAdmin --> UC_4.1
+SystemAdmin --> UC_4.2
+SystemAdmin --> UC_4.3
+
+UC_4.1.1 ..> UC_4.1 :extends
+UC_4.1.2 ..> UC_4.1 :extends
+UC_4.2.1 ..> UC_4.2 :extends
+UC_4.3.1 ..> UC_4.3 :extends
+
+right footer
+    Модель прецедентів для адміністратора системи.
+    НТУУ КПІ ім.І.Сікорського
+    Київ-2024
+end footer
+```
 @enduml
 
 
