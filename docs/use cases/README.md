@@ -73,6 +73,7 @@
 ### 2. Схема взаємодії користувача
 
 @startuml
+```
 skinparam actor {
     BackgroundColor #ffed94
     BorderColor black
@@ -105,12 +106,14 @@ footer
     НТУУ КПІ ім. І. Сікорського
     Київ-2024
 endfooter
+```
 @enduml
 
 
 ### 3. Схема взаємодії дослідника
 
 @startuml
+```
 skinparam actor {
     BackgroundColor #bffaa2
     BorderColor black
@@ -141,12 +144,14 @@ footer
     НТУУ КПІ ім. І. Сікорського
     Київ-2024
 endfooter
+```
 @enduml
 
 
 ### 4. Схема взаємодії експерта
 
 @startuml
+```
 skinparam actor {
     BackgroundColor #bffaa2
     BorderColor black
@@ -177,12 +182,14 @@ footer
     НТУУ КПІ ім. І. Сікорського
     Київ-2024
 endfooter
+```
 @enduml
 
 
 ### 5. Схема взаємодії адміністратора системи
 
 @startuml
+```
 skinparam actor {
     BackgroundColor #94f1ff
     BorderColor black
@@ -214,6 +221,7 @@ footer
     НТУУ КПІ ім. І. Сікорського
     Київ-2024
 endfooter
+```
 @enduml
 
 
