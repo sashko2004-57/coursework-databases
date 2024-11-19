@@ -158,30 +158,23 @@ skinparam actor {
     FontColor black
 }
 
-actor "Дослідник" as DataResearcher
-
-usecase "<b>Завантажити новий набір даних</b>\nЗавантаження даних" as UC_2.1
-usecase "<b>Отримати аналітику по даним</b>\nАналіз даних" as UC_2.2
-usecase "<b>Редагувати опис набору даних</b>\nРедагування опису" as UC_2.3
-
-' Дочірні варіанти використання
-usecase "<b>Додати опис</b>\nДодавання текстового опису" as UC_2.1.1
-usecase "<b>Позначити дані як публічні</b>\nПублікація даних" as UC_2.3.1
-
-' Основні взаємодії
-DataResearcher --> UC_2.1
-DataResearcher --> UC_2.2
-DataResearcher --> UC_2.3
-
-' Зв'язки розширення (extends) для дочірніх прецедентів
-UC_2.1.1 ..|> UC_2.1 : extends
-UC_2.3.1 ..|> UC_2.3 : extends
-
-footer
-    Модель прецедентів для дослідника.
-    НТУУ КПІ ім. І. Сікорського
-    Київ-2024
-endfooter
+    actor "Експерт" as DataExpert #eacffa
+    usecase "Оцінити якість набору даних" as UC_3.1
+    usecase "Додати експертну думку" as UC_3.2
+    
+    usecase "Додати коментар" as UC_3.2.1
+    usecase "Позначити набір даних як надійний" as UC_3.2.2
+    
+    DataExpert --> UC_3.1
+    DataExpert --> UC_3.2
+    
+    UC_3.2.1 ..> UC_3.2 :extends
+    UC_3.2.2 ..> UC_3.2 :extends
+    right footer
+        Модель прецедентів для експерта з відкритих даних.
+        НТУУ КПІ ім.І.Сікорського
+        Київ-2024
+    end footer
 ```
 @enduml
 
