@@ -76,3 +76,71 @@ DatarecordCategory "0.*"-r-"1.1" Datarecord
 Category "1.1"--"0.*" Category
 
 @enduml
+
+# ER-модель
+
+@startuml
+
+entity User <<ENTITY>> {
++ id <<NUMBER>>
++ name <<TEXT>>
++ email <<TEXT>>
++ password <<TEXT>>
++ roleId <<NUMBER>>
+}
+
+entity Role <<ENTITY>> {
++ id <<NUMBER>>
++ name <<TEXT>>
+}
+
+entity Datarecord <<ENTITY>> {
++ id <<NUMBER>>
++ name <<TEXT>>
++ data <<TEXT>>
++ type <<TEXT>>
++ time <<TEXT>>
++ description <<TEXT>>
+}
+
+entity Access <<ENTITY>> {
++ id <<NUMBER>>
++ userId <<NUMBER>>
++ datarecordId <<NUMBER>>
++ time <<DATETIME>>
++ type <<TEXT>>
+}
+
+entity Tag <<ENTITY>> {
++ id <<NUMBER>>
++ name <<TEXT>>
+}
+
+entity Category <<ENTITY>> {
++ id <<NUMBER>>
++ name <<TEXT>>
++ parentCategoryId <<NUMBER>>
+}
+
+entity DatarecordTag <<ENTITY>> {
++ id <<NUMBER>>
++ datarecordId <<NUMBER>>
++ tagId <<NUMBER>>
+}
+
+entity DatarecordCategory <<ENTITY>> {
++ id <<NUMBER>>
++ datarecordId <<NUMBER>>
++ categoryId <<NUMBER>>
+}
+
+Role "1.1"-r->"0.*" User
+User "1.1"-->"0.*" Access
+Access "0.*"-->"1.1" Datarecord
+Tag "1.1"-d->"0.*" DatarecordTag
+DatarecordTag "0.*"-l->"1.1" Datarecord
+Category "1.1"-d->"0.*" DatarecordCategory
+DatarecordCategory "0.*"-r->"1.1" Datarecord
+Category "0.1"-->"0.*" Category
+
+@enduml
