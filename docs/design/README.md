@@ -144,3 +144,7 @@ DatarecordCategory "0.*"-r->"1.1" Datarecord
 Category "0.1"-->"0.*" Category
 
 @enduml
+
+# Реляційна схема 
+![Diagram](https://github.com/user-attachments/assets/c164ab09-60de-48c0-b914-b12b7f82fcc0)
+
