@@ -81,57 +81,57 @@ Category "1.1"--"0.*" Category
 
 @startuml
 
-entity User <<ENTITY>> {
-+ id <<NUMBER>>
-+ name <<TEXT>>
-+ email <<TEXT>>
-+ password <<TEXT>>
-+ roleId <<NUMBER>>
+entity User  {
++ id: UUID
++ name: TEXT
++ email: TEXT
++ password: TEXT
++ roleId: UUID
 }
 
-entity Role <<ENTITY>> {
-+ id <<NUMBER>>
-+ name <<TEXT>>
+entity Role  {
++ id: UUID
++ name: TEXT
 }
 
-entity Datarecord <<ENTITY>> {
-+ id <<NUMBER>>
-+ name <<TEXT>>
-+ data <<TEXT>>
-+ type <<TEXT>>
-+ time <<TEXT>>
-+ description <<TEXT>>
+entity Datarecord  {
++ id: UUID
++ name: TEXT
++ data: TEXT
++ type: TEXT
++ time: DATETIME
++ description: TEXT
 }
 
-entity Access <<ENTITY>> {
-+ id <<NUMBER>>
-+ userId <<NUMBER>>
-+ datarecordId <<NUMBER>>
-+ time <<DATETIME>>
-+ type <<TEXT>>
+entity Access  {
++ id: UUID
++ userId: UUID
++ datarecordId: UUID
++ time: DATETIME
++ type: TEXT
 }
 
-entity Tag <<ENTITY>> {
-+ id <<NUMBER>>
-+ name <<TEXT>>
+entity Tag  {
++ id: UUID
++ name: TEXT
 }
 
-entity Category <<ENTITY>> {
-+ id <<NUMBER>>
-+ name <<TEXT>>
-+ parentCategoryId <<NUMBER>>
+entity Category  {
++ id: UUID
++ name: TEXT
++ parentCategoryId: UUID
 }
 
-entity DatarecordTag <<ENTITY>> {
-+ id <<NUMBER>>
-+ datarecordId <<NUMBER>>
-+ tagId <<NUMBER>>
+entity DatarecordTag  {
++ id: UUID
++ datarecordId: UUID
++ tagId: UUID
 }
 
-entity DatarecordCategory <<ENTITY>> {
-+ id <<NUMBER>>
-+ datarecordId <<NUMBER>>
-+ categoryId <<NUMBER>>
+entity DatarecordCategory  {
++ id: UUID
++ datarecordId: UUID
++ categoryId: UUID
 }
 
 Role "1.1"-r->"0.*" User
