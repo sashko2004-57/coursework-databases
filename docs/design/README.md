@@ -30,7 +30,7 @@ entity Datarecord.id <<NUMBER>> #fcf4dc
 entity Datarecord.name <<TEXT>> #fcf4dc
 entity Datarecord.data <<TEXT>> #fcf4dc
 entity Datarecord.type <<TEXT>> #fcf4dc
-entity Datarecord.time <<TEXT>> #fcf4dc
+entity Datarecord.time <<DATETIME>> #fcf4dc
 entity Datarecord.description <<TEXT>> #fcf4dc
 Datarecord.id -d-* Datarecord
 Datarecord.name -u-* Datarecord
