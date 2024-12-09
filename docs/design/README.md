@@ -78,72 +78,64 @@ Category "1.1"--"0.*" Category
 @enduml
 
 # ER-модель
+entity User <>{ User.id:NUMBER User.username:TEXT User.email:TEXT User.password:TEXT User.firstname:TEXT User.lastname:TEXT }
 
-@startuml
-
-entity User  {
-+ id: UUID
-+ name: TEXT
-+ email: TEXT
-+ password: TEXT
-+ roleId: UUID
+entity Role <<ENTITY>>{ 
+    Role.name:TEXT 
+    Role.id:NUMBER 
 }
 
-entity Role  {
-+ id: UUID
-+ name: TEXT
+entity Permission <<ENTITY>> {
+    Permission.id:NUMBER
+    Permission.name:TEXT
 }
 
-entity Datarecord  {
-+ id: UUID
-+ name: TEXT
-+ data: TEXT
-+ type: TEXT
-+ time: DATETIME
-+ description: TEXT
+entity Grant_Permission <<ENTITY>> {
 }
 
-entity Access  {
-+ id: UUID
-+ userId: UUID
-+ datarecordId: UUID
-+ time: DATETIME
-+ type: TEXT
+entity Request <<ENTITY>> {
+    Request.id:NUMBER
+    Request.type:TEXT
+    Request.message:TEXT
 }
 
-entity Tag  {
-+ id: UUID
-+ name: TEXT
+entity Access <<ENTITY>>{ 
+    Access.id:NUMBER 
 }
 
-entity Category  {
-+ id: UUID
-+ name: TEXT
-+ parentCategoryId: UUID
+entity Datafile <<ENTITY>> { 
+    Datafile.id:NUMBER 
+    Datafile.name:TEXT 
+    Datafile.content:TEXT 
+    Datafile.description:TEXT 
+    Datafile.format:TEXT 
+    Datafile.date:NUMBER    
 }
 
-entity DatarecordTag  {
-+ id: UUID
-+ datarecordId: UUID
-+ tagId: UUID
+entity Datafile_tag <<ENTITY>>{ 
 }
 
-entity DatarecordCategory  {
-+ id: UUID
-+ datarecordId: UUID
-+ categoryId: UUID
+entity Tag <<ENTITY>>{ 
+    Tag.name:TEXT 
 }
 
-Role "1.1"-r->"0.*" User
-User "1.1"-->"0.*" Access
-Access "0.*"-->"1.1" Datarecord
-Tag "1.1"-d->"0.*" DatarecordTag
-DatarecordTag "0.*"-l->"1.1" Datarecord
-Category "1.1"-d->"0.*" DatarecordCategory
-DatarecordCategory "0.*"-r->"1.1" Datarecord
-Category "0.1"-->"0.*" Category
+User"0,*" -- "1,1"Role
 
-@enduml
+Permission "1,1"--"0,*" Grant_Permission
+Grant_Permission "0,*"--"1,1" Role
+
+User "1,1"--"0,*" Request
+
+User"1,1" -- "0,*"Access
+
+Request "0,*"-r-"1,1" Access
+
+Access"0,*" -- "1,1"Datafile 
+Datafile"1,1" -r- "0,*"Datafile_tag 
+Datafile_tag"0,*" -r- "1,1"Tag 
+
+
+
 
 # Реляційна схема 
 ![Diagram](https://github.com/user-attachments/assets/c164ab09-60de-48c0-b914-b12b7f82fcc0)
