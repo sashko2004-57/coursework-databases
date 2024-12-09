@@ -7,75 +7,90 @@
 
 # Модель бізнес-об'єктів
 
-@startuml
+Модель бізнес-об'єктів
 
-entity User <<ENTITY>> #ffe396
-entity User.id <<NUMBER>> #fcf4dc
-entity User.name <<TEXT>> #fcf4dc
-entity User.email <<TEXT>> #fcf4dc
-entity User.password <<TEXT>> #fcf4dc
-User.id -r-* User
-User.name -r-* User
-User.email --* User
-User.password --* User
+@startuml entity User <> #88FFAE entity User.id <> #FFFFFF entity User.login <> #FFFFFF entity User.firstname <> #FFFFFF entity User.lastname <> #FFFFFF entity User.email <> #FFFFFF entity User.password <> #FFFFFF
 
-entity Role <<ENTITY>> #ffe396
-entity Role.id <<NUMBER>> #fcf4dc
-entity Role.name <<TEXT>> #fcf4dc
-Role.id -l-* Role
-Role.name -r-* Role
+entity Role <<ENTITY>> #88FFAE
+entity Role.id <<NUMBER>> #FFFFFF
+entity Role.name <<TEXT>> #FFFFFF
 
-entity Datarecord <<ENTITY>> #ffe396
-entity Datarecord.id <<NUMBER>> #fcf4dc
-entity Datarecord.name <<TEXT>> #fcf4dc
-entity Datarecord.data <<TEXT>> #fcf4dc
-entity Datarecord.type <<TEXT>> #fcf4dc
-entity Datarecord.time <<DATETIME>> #fcf4dc
-entity Datarecord.description <<TEXT>> #fcf4dc
-Datarecord.id -d-* Datarecord
-Datarecord.name -u-* Datarecord
-Datarecord.data -d-* Datarecord
-Datarecord.type -u-* Datarecord
-Datarecord.time -d-* Datarecord
-Datarecord.description -u-* Datarecord
+entity Permission <<ENTITY>> #88FFAE
+entity Permission.id <<NUMBER>> #FFFFFF
+entity Permission.name <<TEXT>> #FFFFFF
 
-entity Access <<ENTITY>> #ffe396
-entity Access.id <<NUMBER>> #fcf4dc
-entity Access.time <<DATETIME>> #fcf4dc
-entity Access.type <<TEXT>> #fcf4dc
-Access.id --* Access
-Access.time --* Access
+entity Grant_Permission <<ENTITY>> #88FFAE
 
-entity Tag <<ENTITY>> #ffe396
-entity Tag.id <<NUMBER>> #fcf4dc
-entity Tag.name <<TEXT>> #fcf4dc
-Tag.id --* Tag
-Tag.name --* Tag
+entity Request <<ENTITY>> #88FFAE
+entity Request.id <<NUMBER>> #FFFFFF
+entity Request.type <<NUMBER>> #FFFFFF
+entity Request.message <<TEXT>> #FFFFFF
 
-entity Category <<ENTITY>> #ffe396
-entity Category.id <<NUMBER>> #fcf4dc
-entity Category.name <<TEXT>> #fcf4dc
-Category.id --* Category
-Category.name --* Category
+entity Access <<ENTITY>> #88FFAE
+entity Access.id <<NUMBER>> #FFFFFF
 
-entity DatarecordTag <<ENTITY>> #ffe396
-entity DatarecordTag.id <<NUMBER>> #fcf4dc
-DatarecordTag.id -u-* DatarecordTag
+entity Datafile <<ENTITY>> #88FFAE
+entity Datafile.id <<NUMBER>> #FFFFFF
+entity Datafile.name <<TEXT>> #FFFFFF
+entity Datafile.content <<TEXT>> #FFFFFF
+entity Datafile.description <<TEXT>> #FFFFFF
+entity Datafile.format <<TEXT>> #FFFFFF
+entity Datafile.date <<DATETIME>> #FFFFFF
 
-entity DatarecordCategory <<ENTITY>> #ffe396
-entity DatarecordCategory.id <<NUMBER>> #fcf4dc
-DatarecordCategory.id -u-* DatarecordCategory
+entity Tag <<ENTITY>> #88FFAE
+entity Tag.id <<NUMBER>> #FFFFFF
+entity Tag.name <<TEXT>> #FFFFFF
 
-Role "1.1"-d-"0.*" User
-User "1.1"--"0.*" Access
-Access "0.*"--"1.1" Datarecord
-Tag "1.1"-d-"0.*" DatarecordTag
-DatarecordTag "0.*"-l-"1.1" Datarecord
-Category "1.1"-d-"0.*" DatarecordCategory
-DatarecordCategory "0.*"-r-"1.1" Datarecord
-Category "1.1"--"0.*" Category
+entity Datafile_tag <<ENTITY>> #88FFAE
+
+User *-u- User.id
+User *-u- User.login
+User *-u- User.firstname
+User *-u- User.lastname
+User *-u- User.email
+User *-u- User.password
+
+Role *-d- Role.id
+Role *-d- Role.name
+
+Permission *-u- Permission.id
+Permission *-u- Permission.name
+
+Request *-u- Request.id
+Request *-u- Request.type
+Request *-u- Request.message
+
+Access *-d- Access.id
+
+Datafile *-d-- Datafile.id
+Datafile *-d-- Datafile.name
+Datafile *-d-- Datafile.content
+Datafile *-d-- Datafile.date
+Datafile *-d-- Datafile.description
+Datafile *-d-- Datafile.format
+
+Tag *-u- Tag.id
+Tag *-r- Tag.name
+
+User "0,*"-d-"1,1" Role
+
+Permission "1,1"-r-"0,*" Grant_Permission
+Grant_Permission "0,*"-r-"1,1" Role
+
+User "1,1"-d-"0,*" Access
+
+User "1,1"-u-"0,*" Request
+
+Request "0,*"-r-"1,1" Access
+
+Access "0,*"-r-"1,1" Datafile
+
+Datafile "1,1"-r-"0,*" Datafile_tag
+Datafile_tag "0,*"-r-"1,1" Tag
 
 @enduml
+
+
 
 # ER-модель
 entity User <>{ User.id:NUMBER User.username:TEXT User.email:TEXT User.password:TEXT User.firstname:TEXT User.lastname:TEXT }
