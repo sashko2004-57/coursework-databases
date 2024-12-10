@@ -7,8 +7,6 @@
 
 # Модель бізнес-об'єктів
 
-Модель бізнес-об'єктів
-
 @startuml entity User <> #88FFAE entity User.id <> #FFFFFF entity User.login <> #FFFFFF entity User.firstname <> #FFFFFF entity User.lastname <> #FFFFFF entity User.email <> #FFFFFF entity User.password <> #FFFFFF
 
 entity Role <<ENTITY>> #88FFAE
